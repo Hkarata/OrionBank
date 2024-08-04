@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35118.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionBank.Silo", "OrionBank.Silo\OrionBank.Silo.csproj", "{99C4EF89-D2A8-4711-BFC3-DA7687DC46C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionBank.Silo", "OrionBank.Silo\OrionBank.Silo.csproj", "{99C4EF89-D2A8-4711-BFC3-DA7687DC46C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionBank.Abstractions", "OrionBank.Abstractions\OrionBank.Abstractions.csproj", "{7F35C98A-68CD-40BE-8749-EA91687475F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionBank.Abstractions", "OrionBank.Abstractions\OrionBank.Abstractions.csproj", "{7F35C98A-68CD-40BE-8749-EA91687475F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionBank.Grains", "OrionBank.Grains\OrionBank.Grains.csproj", "{7C5CDF2C-2199-4E98-81F1-AE3B7C96F2D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionBank.Grains", "OrionBank.Grains\OrionBank.Grains.csproj", "{7C5CDF2C-2199-4E98-81F1-AE3B7C96F2D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

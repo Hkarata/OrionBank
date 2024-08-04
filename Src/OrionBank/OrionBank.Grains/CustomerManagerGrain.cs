@@ -3,7 +3,7 @@ using OrionBank.Abstractions.GrainInterfaces;
 
 namespace OrionBank.Grains
 {
-    public sealed class CustomerManager(
+    internal class CustomerManagerGrain(
             [PersistentState(
                 stateName: "Customers",
                 storageName: "OrionBank")]

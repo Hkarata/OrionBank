@@ -3,7 +3,7 @@ using OrionBank.Abstractions.GrainInterfaces;
 
 namespace OrionBank.Grains
 {
-    public sealed class AccountGrain : Grain, IAccountGrain
+    internal class AccountGrain : Grain, IAccountGrain
     {
         Task IAccountGrain.ActivateAccount()
         {
