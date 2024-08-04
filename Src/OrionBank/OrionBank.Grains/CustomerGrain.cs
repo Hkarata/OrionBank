@@ -13,13 +13,22 @@ namespace OrionBank.Grains
     {
         private readonly IPersistentState<Customer> _customer = customer;
 
-        public Task CreateOrUpdateCustomer(Customer customerDetails) =>
-            Task.FromResult(_customer.State = customerDetails);
+        Task ICustomerGrain.CreateOrUpdateCustomer(Customer customerDetails) =>
+            UpdateStateAsync(customerDetails);
 
-        public Task DeleteCustomer() =>
+        Task ICustomerGrain.DeleteCustomer() =>
             Task.FromResult(_customer.State.IsDeleted = true);
 
-        public Task<Customer> GetCustomer() =>
+        Task<Customer> ICustomerGrain.GetCustomer() =>
             Task.FromResult(_customer.State);
+
+        private async Task UpdateStateAsync(Customer customer)
+        {
+            _customer.State = customer;
+            await _customer.WriteStateAsync();
+
+            var customerManager = GrainFactory.GetGrain<ICustomerManagerGrain>(0.ToString());
+            await customerManager.CreateOrUpdateCustomer(customer);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OrionBank.Silo.StartUpTasks;
 
 
 var builder = Host.CreateDefaultBuilder(args);
@@ -14,6 +15,7 @@ builder.UseOrleans((context, siloBuilder) =>
             options.ConnectionString = "Data Source=HERIS_PC\\SQLEXPRESS;Database=OrionBankDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True";
         })
         .UseTransactions()
+        .AddStartupTask<SeedCustomersTask>()
         .ConfigureLogging(logging => logging.AddConsole());
 })
     .UseConsoleLifetime();

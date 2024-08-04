@@ -4,7 +4,7 @@ using OrionBank.Silo.Extensions;
 
 namespace OrionBank.Silo.StartUpTasks
 {
-    internal class SeedCustomersTask(IGrainFactory grainFactory) : IStartupTask
+    public sealed class SeedCustomersTask(IGrainFactory grainFactory) : IStartupTask
     {
         public async Task Execute(CancellationToken cancellationToken)
         {

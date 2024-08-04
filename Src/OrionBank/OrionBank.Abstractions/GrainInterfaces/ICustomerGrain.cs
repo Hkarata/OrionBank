@@ -3,6 +3,7 @@ using Orleans;
 
 namespace OrionBank.Abstractions.GrainInterfaces;
 
+[Alias("GrainInterfaces.ICustomerGrain")]
 public interface ICustomerGrain : IGrainWithStringKey
 {
     Task<Customer> GetCustomer();
