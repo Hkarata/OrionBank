@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35118.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionBank.Silo", "OrionBank.Silo\OrionBank.Silo.csproj", "{99C4EF89-D2A8-4711-BFC3-DA7687DC46C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionBank.Abstractions", "OrionBank.Abstractions\OrionBank.Abstractions.csproj", "{7F35C98A-68CD-40BE-8749-EA91687475F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{99C4EF89-D2A8-4711-BFC3-DA7687DC46C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99C4EF89-D2A8-4711-BFC3-DA7687DC46C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99C4EF89-D2A8-4711-BFC3-DA7687DC46C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F35C98A-68CD-40BE-8749-EA91687475F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F35C98A-68CD-40BE-8749-EA91687475F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F35C98A-68CD-40BE-8749-EA91687475F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F35C98A-68CD-40BE-8749-EA91687475F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
