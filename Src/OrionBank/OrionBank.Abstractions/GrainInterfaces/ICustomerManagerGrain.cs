@@ -7,6 +7,5 @@ namespace OrionBank.Abstractions.GrainInterfaces
     {
         Task<HashSet<Customer>> GetAllCustomer();
         Task CreateOrUpdateCustomer(Customer customer);
-        Task DeleteCustomer(string customerId);
     }
 }

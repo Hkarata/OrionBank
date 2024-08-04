@@ -5,9 +5,12 @@ namespace OrionBank.Abstractions.GrainInterfaces
 {
     public interface IAccountGrain : IGrainWithStringKey
     {
-        Task ActivateAccount(string accountId);
-        Task DeactivateAccount(string accountId);
-        ValueTask<(bool IsExisting, Account accountDetails)> TryGetAccount(string accountId);
+        Task ActivateAccount();
+
+        Task DeactivateAccount();
+
+        ValueTask<Account> TryGetAccount(string accountId);
+
         Task CreateOrUpdateAccount(Account accountDetails);
 
         [Transaction(TransactionOption.Join)]
@@ -17,6 +20,6 @@ namespace OrionBank.Abstractions.GrainInterfaces
         Task Deposit(int amount);
 
         [Transaction(TransactionOption.CreateOrJoin)]
-        Task<int> GetBalance();
+        Task<Double> GetBalance();
     }
 }

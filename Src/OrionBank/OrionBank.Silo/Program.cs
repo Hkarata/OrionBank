@@ -13,6 +13,7 @@ builder.UseOrleans((context, siloBuilder) =>
             options.Invariant = "System.Data.SqlClient";
             options.ConnectionString = "Data Source=HERIS_PC\\SQLEXPRESS;Database=OrionBankDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True";
         })
+        .UseTransactions()
         .ConfigureLogging(logging => logging.AddConsole());
 })
     .UseConsoleLifetime();

@@ -5,9 +5,9 @@ namespace OrionBank.Abstractions.GrainInterfaces;
 
 public interface ICustomerGrain : IGrainWithStringKey
 {
-    ValueTask<(bool IsExisting, Customer customerDetails)> TryGetCustomer(string customerId);
+    Task<Customer> GetCustomer();
 
     Task CreateOrUpdateCustomer(Customer customerDetails);
 
-    Task DeleteCustomer(string customerId);
+    Task DeleteCustomer();
 }
