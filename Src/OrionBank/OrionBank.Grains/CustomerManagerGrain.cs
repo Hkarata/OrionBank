@@ -7,8 +7,8 @@ namespace OrionBank.Grains
     [Reentrant]
     public sealed class CustomerManagerGrain(
         [PersistentState(
-            stateName: "Customer",
-            storageName: "customer-details")]
+            stateName: "Customers",
+            storageName: "OrionBank")]
         IPersistentState<HashSet<string>> state,
         IGrainFactory grainFactory)
         : Grain, ICustomerManagerGrain
@@ -20,12 +20,18 @@ namespace OrionBank.Grains
 
         public Task CreateOrUpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            state.State.Add(customer.Id);
+            _customerCache[customer.Id] = customer;
+
+            return state.WriteStateAsync();
         }
 
         public Task DeleteCustomer(string customerId)
         {
-            throw new NotImplementedException();
+            state.State.Remove(customerId);
+            _customerCache.Remove(customerId);
+
+            return state.WriteStateAsync();
         }
 
         public Task<HashSet<Customer>> GetAllCustomer() =>
