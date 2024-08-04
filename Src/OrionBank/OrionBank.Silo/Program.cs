@@ -7,6 +7,11 @@ builder.UseOrleans((context, siloBuilder) =>
 {
     siloBuilder
         .UseLocalhostClustering()
+        .AddAdoNetGrainStorage("OrionBankStorage", options =>
+        {
+            options.Invariant = "System.Data.SqlClient";
+            options.ConnectionString = "Data Source=HERIS_PC\\SQLEXPRESS;Database=OrionBankDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True";
+        })
         .ConfigureLogging(logging => logging.AddConsole());
 })
     .UseConsoleLifetime();
