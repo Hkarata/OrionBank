@@ -4,15 +4,20 @@ using OrionBank.Silo.Extensions;
 
 namespace OrionBank.Silo.StartUpTasks
 {
-    public sealed class SeedCustomersTask(IGrainFactory grainFactory) : IStartupTask
+    public sealed class SeedCustomersTask : IStartupTask
     {
-        public async Task Execute(CancellationToken cancellationToken)
+        private readonly IGrainFactory _grainFactory;
+
+        public SeedCustomersTask(IGrainFactory grainFactory) =>
+            _grainFactory = grainFactory;
+
+        async Task IStartupTask.Execute(CancellationToken cancellationToken)
         {
             var faker = new Customer().GetBogusFaker();
 
             foreach (var customer in faker.GenerateLazy(50))
             {
-                var customerGrain = grainFactory.GetGrain<ICustomerGrain>(customer.Id);
+                var customerGrain = _grainFactory.GetGrain<ICustomerGrain>(customer.Id);
                 await customerGrain.CreateOrUpdateCustomer(customer);
             }
         }

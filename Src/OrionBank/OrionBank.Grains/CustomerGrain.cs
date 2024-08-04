@@ -3,12 +3,12 @@ using OrionBank.Abstractions.GrainInterfaces;
 
 namespace OrionBank.Grains
 {
-    internal class CustomerGrain(
+    public class CustomerGrain(
         [PersistentState(
             stateName: "Customer",
             storageName: "OrionBank"
         )] IPersistentState<Customer> customer
-        ) 
+        )
         : Grain, ICustomerGrain
     {
         private readonly IPersistentState<Customer> _customer = customer;

@@ -1,8 +1,10 @@
 ﻿using OrionBank.Abstractions.Entities;
 using OrionBank.Abstractions.GrainInterfaces;
+using Orleans.Concurrency;
 
 namespace OrionBank.Grains
 {
+    [Reentrant]
     internal class CustomerManagerGrain(
             [PersistentState(
                 stateName: "Customers",
@@ -13,7 +15,7 @@ namespace OrionBank.Grains
     {
         private readonly Dictionary<string, Customer> _customerCache = new();
 
-        public override Task OnActivateAsync(CancellationToken cancellationToken) => 
+        public override Task OnActivateAsync(CancellationToken cancellationToken) =>
             PopulateCustomerCacheAsync(cancellationToken);
 
         Task ICustomerManagerGrain.CreateOrUpdateCustomer(Customer customer)

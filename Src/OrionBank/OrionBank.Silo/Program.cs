@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OrionBank.Silo.StartUpTasks;
+using Orleans.Configuration;
 
 
 var builder = Host.CreateDefaultBuilder(args);
@@ -9,6 +10,11 @@ builder.UseOrleans((context, siloBuilder) =>
 {
     siloBuilder
         .UseLocalhostClustering()
+        .Configure<ClusterOptions>(options =>
+        {
+            options.ClusterId = "dev";
+            options.ServiceId = "OrionBank";
+        })
         .AddAdoNetGrainStorage("OrionBank", options =>
         {
             options.Invariant = "System.Data.SqlClient";
@@ -22,4 +28,5 @@ builder.UseOrleans((context, siloBuilder) =>
 
 var app = builder.Build();
 
-await app.RunAsync();
+app.Run();
+
