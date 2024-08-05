@@ -1,12 +1,10 @@
-﻿using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using OrionBank.Silo.StartUpTasks;
+﻿using OrionBank.Silo.StartUpTasks;
 using Orleans.Configuration;
 
 
-var builder = Host.CreateDefaultBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-builder.UseOrleans((context, siloBuilder) =>
+builder.Host.UseOrleans((context, siloBuilder) =>
 {
     siloBuilder
         .UseLocalhostClustering()
@@ -17,16 +15,26 @@ builder.UseOrleans((context, siloBuilder) =>
         })
         .AddAdoNetGrainStorage("OrionBank", options =>
         {
-            options.Invariant = "System.Data.SqlClient";
+            options.Invariant = "Microsoft.Data.SqlClient";
             options.ConnectionString = "Data Source=HERIS_PC\\SQLEXPRESS;Database=OrionBankDb;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=True";
         })
         .UseTransactions()
-        .AddStartupTask<SeedCustomersTask>()
+        //.AddStartupTask<SeedCustomersTask>()
+        .UseDashboard(dashBoardOptions =>
+        {
+            dashBoardOptions.Username = "admin";
+            dashBoardOptions.Password = "admin";
+            dashBoardOptions.HostSelf = false;
+        })
         .ConfigureLogging(logging => logging.AddConsole());
-})
-    .UseConsoleLifetime();
+});
 
 var app = builder.Build();
 
-app.Run();
+app.UseHttpsRedirection();
 
+app.UseStaticFiles();
+
+app.Map("", x => x.UseOrleansDashboard());
+
+app.Run();
