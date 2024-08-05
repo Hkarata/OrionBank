@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionBank.Abstractions", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrionBank.Grains", "OrionBank.Grains\OrionBank.Grains.csproj", "{7C5CDF2C-2199-4E98-81F1-AE3B7C96F2D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionBank.Client", "OrionBank.Client\OrionBank.Client.csproj", "{5AA6B65D-73F4-443D-B6C2-B31C0FDE39EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7C5CDF2C-2199-4E98-81F1-AE3B7C96F2D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C5CDF2C-2199-4E98-81F1-AE3B7C96F2D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C5CDF2C-2199-4E98-81F1-AE3B7C96F2D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA6B65D-73F4-443D-B6C2-B31C0FDE39EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA6B65D-73F4-443D-B6C2-B31C0FDE39EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA6B65D-73F4-443D-B6C2-B31C0FDE39EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA6B65D-73F4-443D-B6C2-B31C0FDE39EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
