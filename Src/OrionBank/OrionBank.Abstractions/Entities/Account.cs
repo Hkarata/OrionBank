@@ -1,6 +1,4 @@
-﻿using Orleans;
-
-namespace OrionBank.Abstractions.Entities
+﻿namespace OrionBank.Abstractions.Entities
 {
     [GenerateSerializer]
     public sealed record class Account

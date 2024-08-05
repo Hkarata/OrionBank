@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+@font-face {
+    font-family: 'Aptos';
+    src: url('../fonts/Aptos.ttf');
+}

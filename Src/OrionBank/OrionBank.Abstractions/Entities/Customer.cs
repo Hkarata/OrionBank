@@ -1,6 +1,4 @@
-﻿using Orleans;
-
-namespace OrionBank.Abstractions.Entities
+﻿namespace OrionBank.Abstractions.Entities
 {
     [GenerateSerializer, Immutable]
     public sealed record class Customer
