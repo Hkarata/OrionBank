@@ -1,10 +1,12 @@
-﻿using OrionBank.Silo.StartUpTasks;
+﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using OrionBank.Silo.StartUpTasks;
 using Orleans.Configuration;
 
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = Host.CreateDefaultBuilder(args);
 
-builder.Host.UseOrleans((context, siloBuilder) =>
+builder.UseOrleans((context, siloBuilder) =>
 {
     siloBuilder
         .UseLocalhostClustering()
@@ -24,17 +26,13 @@ builder.Host.UseOrleans((context, siloBuilder) =>
         {
             dashBoardOptions.Username = "admin";
             dashBoardOptions.Password = "admin";
-            dashBoardOptions.HostSelf = false;
+            dashBoardOptions.HostSelf = true;
+            dashBoardOptions.Host = "*";
+            dashBoardOptions.Port = 8080;
         })
         .ConfigureLogging(logging => logging.AddConsole());
 });
 
 var app = builder.Build();
-
-app.UseHttpsRedirection();
-
-app.UseStaticFiles();
-
-app.Map("", x => x.UseOrleansDashboard());
 
 app.Run();
