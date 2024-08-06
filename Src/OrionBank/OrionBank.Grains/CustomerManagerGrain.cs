@@ -18,15 +18,17 @@ namespace OrionBank.Grains
         public override Task OnActivateAsync(CancellationToken cancellationToken) =>
             PopulateCustomerCacheAsync(cancellationToken);
 
-        Task ICustomerManagerGrain.CreateOrUpdateCustomer(Customer customer)
-        {
-            customerIds.State.Add(customer.Id);
-
-            return Task.FromResult(_customerCache[customer.Id] = customer);
-        }
+        Task ICustomerManagerGrain.CreateOrUpdateCustomer(Customer customer) =>
+            UpdateState(customer);
 
         Task<HashSet<Customer>> ICustomerManagerGrain.GetAllCustomer() =>
             Task.FromResult(_customerCache.Values.ToHashSet());
+
+        private async Task UpdateState(Customer customer)
+        {
+            customerIds.State.Add(customer.Id);
+            await customerIds.WriteStateAsync();
+        }
 
         private async Task PopulateCustomerCacheAsync(CancellationToken cancellationToken)
         {

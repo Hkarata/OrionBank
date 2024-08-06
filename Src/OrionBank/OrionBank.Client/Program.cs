@@ -1,22 +1,25 @@
+using OrionBank.Client.Services;
+using Orleans.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddRazorPages();
 
-//builder.Host.UseOrleansClient(clientBuilder =>
-//{
-//    clientBuilder.UseLocalhostClustering()
-//                    .Configure<ClusterOptions>(clusterOptions =>
-//                    {
-//                        clusterOptions.ClusterId = "dev";
-//                        clusterOptions.ServiceId = "OrionBank";
-//                    });
-//});
+builder.Host.UseOrleansClient(clientBuilder =>
+{
+    clientBuilder.UseLocalhostClustering()
+                    .Configure<ClusterOptions>(clusterOptions =>
+                    {
+                        clusterOptions.ClusterId = "dev";
+                        clusterOptions.ServiceId = "OrionBank";
+                    });
+});
 
 builder.Services.AddHttpContextAccessor();
-//builder.Services.AddSingleton<BaseClusterService>();
-//builder.Services.AddSingleton<CustomerManagerService>();
+builder.Services.AddSingleton<BaseClusterService>();
+builder.Services.AddSingleton<CustomerManagerService>();
 
 var app = builder.Build();
 

@@ -19,6 +19,8 @@ namespace OrionBank.Silo.StartUpTasks
             {
                 var customerGrain = _grainFactory.GetGrain<ICustomerGrain>(customer.Id);
                 await customerGrain.CreateOrUpdateCustomer(customer);
+                var customerManagerGrain = _grainFactory.GetGrain<ICustomerManagerGrain>(1.ToString());
+                await customerManagerGrain.CreateOrUpdateCustomer(customer);
             }
         }
     }
