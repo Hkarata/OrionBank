@@ -2,23 +2,34 @@
 
 namespace OrionBank.Abstractions.GrainInterfaces
 {
+    [Alias("OrionBank.Abstractions.GrainInterfaces.IAccountGrain")]
     public interface IAccountGrain : IGrainWithStringKey
     {
+        [Alias("ActivateAccount")]
         Task ActivateAccount();
 
+        [Alias("DeactivateAccount")]
         Task DeactivateAccount();
 
-        ValueTask<Account> TryGetAccount(string accountId);
+        [Alias("SuspendAccount")]
+        Task SuspendAccount();
 
-        Task CreateOrUpdateAccount(Account accountDetails);
+        [Alias("TryGetAccount")]
+        ValueTask<Account> TryGetAccount();
+
+        [Alias("CreateOrUpdateAccount")]
+        Task CreateOrUpdateAccount(AccountActions action ,Account accountDetails);
 
         [Transaction(TransactionOption.Join)]
+        [Alias("Withdraw")]
         Task Withdraw(int amount);
 
         [Transaction(TransactionOption.Join)]
+        [Alias("Deposit")]
         Task Deposit(int amount);
 
         [Transaction(TransactionOption.CreateOrJoin)]
-        Task<Double> GetBalance();
+        [Alias("GetBalance")]
+        Task<double> GetBalance();
     }
 }

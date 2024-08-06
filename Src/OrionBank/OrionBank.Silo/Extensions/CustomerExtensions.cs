@@ -13,7 +13,7 @@ namespace OrionBank.Silo.Extensions
                 .RuleFor(c => c.LastName, (f, c) => f.Name.LastName())
                 .RuleFor(c => c.OtherName, (f, c) => f.Name.LastName())
                 .RuleFor(c => c.Email, (f, c) => f.Internet.Email())
-                .RuleFor(c => c.PhoneNumber, (f, c) => f.Phone.PhoneNumber())
+                .RuleFor(c => c.PhoneNumber, (f, c) => "+255 679 844 679")
                 .RuleFor(c => c.Address, (f, c) => f.Address.FullAddress())
                 .RuleFor(c => c.IsDeleted, (f, c) => false);
 

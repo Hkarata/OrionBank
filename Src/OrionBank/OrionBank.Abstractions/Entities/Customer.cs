@@ -1,6 +1,7 @@
 ﻿namespace OrionBank.Abstractions.Entities
 {
     [GenerateSerializer, Immutable]
+    [Alias("OrionBank.Abstractions.Entities.Customer")]
     public sealed record class Customer
     {
         [Id(0)]
@@ -25,6 +26,12 @@
         public string Address { get; set; } = string.Empty;
 
         [Id(7)]
+        public HashSet<string>? Accounts { get; set; }
+
+        [Id(8)]
         public bool IsDeleted { get; set; }
+
+        [Id(9)]
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
     }
 }
