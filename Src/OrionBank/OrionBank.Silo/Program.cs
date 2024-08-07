@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OrionBank.Silo.StartUpTasks;
+using Orleans.Clustering.AzureStorage;
 using Orleans.Configuration;
 
 
